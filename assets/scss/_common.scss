@@ -1,0 +1,59 @@
+@use "variables" as *;
+@use "skin" as *;
+
+* {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    overflow-x: hidden;
+
+    height: 100%;
+    margin: 0;
+
+    font-family: $font-header;
+}
+a {
+    text-decoration: none;
+
+    color: $color-white;
+}
+
+.fa-angle-left,
+.fa-angle-right {
+    color: rgba($color-white-green, 0.4);
+
+    font-size: 30px;
+}
+
+.fa-play-circle,
+.fa-pause-circle {
+    color: rgba($color-white-green, 0.4);
+
+    font-size: 20vh;
+}
+.fab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 40px;
+    margin-top: -1px;
+
+    transition: 0.25s ease-in;
+
+    opacity: 0.5;
+    border: 1px solid rgba($color-white, 0.5);
+    border-bottom: 1px solid transparent;
+
+    font-size: 24px;
+    &:last-child {
+        border-bottom: 1px solid rgba($color-white, 0.5);
+    }
+    &:hover {
+        opacity: 1;
+        background-color: $color-green;
+    }
+}

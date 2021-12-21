@@ -1,0 +1,340 @@
+@use "skin" as *;
+@use "variables" as *;
+@use "mixins-media" as *;
+
+.slider-container {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: 100%;
+}
+.slides {
+    position: absolute;
+
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+
+    list-style-type: none;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+    height: 100%;
+    padding: $gap;
+
+    transition: opacity 1s;
+
+    opacity: 0;
+    background-position: 40% 30%;
+    background-size: cover;
+
+    &.active {
+        z-index: 1;
+
+        opacity: 1;
+    }
+
+    &-container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+
+        padding-left: $gap;
+
+        text-align: center;
+
+        text-shadow: 10px 2px 40px rgba($color-deep-dark, 0.8);
+        p {
+            max-width: $lg;
+            margin-top: 40px;
+
+            letter-spacing: 0.1em;
+
+            font-size: 18px;
+            font-weight: 600;
+
+            @include xl-lg {
+                max-width: $md;
+            }
+            @include md {
+                max-width: $xs;
+
+                font-size: 16px;
+            }
+            @include sm {
+                max-width: $xs;
+
+                font-size: 10px;
+            }
+        }
+        h2 {
+            margin: 0;
+
+            font-size: 60px;
+
+            @include xl {
+                font-size: 60px;
+            }
+            @include md {
+                font-size: 40px;
+            }
+            @include sm {
+                font-size: 30px;
+            }
+        }
+    }
+
+    &-action {
+        position: absolute;
+
+        float: right;
+
+        padding-left: $gap;
+
+        transform: translate(0, 350%);
+    }
+}
+
+.slide-btn {
+    position: relative;
+
+    display: inline-block;
+    overflow: hidden;
+
+    padding: 16px 50px;
+
+    border: none;
+    background-color: $color-green;
+
+    font-size: 16px;
+    font-weight: 500;
+
+    @include sm {
+        padding: 16px 35px;
+
+        font-size: 10px;
+    }
+}
+.slide-btn:hover {
+    transition-delay: 1s;
+
+    color: $color-white;
+    background: $color-white-green;
+    box-shadow: 0 0 10px $color-white-green, 0 0 40px $color-white-green, 0 0 80px $color-white-green;
+}
+.slide-btn span {
+    position: absolute;
+
+    display: block;
+}
+.slide-btn span:nth-child(1) {
+    top: 0;
+    left: -100%;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(90deg, transparent, $color-white-green);
+}
+.slide-btn:hover span:nth-child(1) {
+    left: 100%;
+
+    transition: 1s;
+}
+.slide-btn span:nth-child(3) {
+    right: -100%;
+    bottom: 0;
+
+    width: 100%;
+    height: 2px;
+
+    background: linear-gradient(270deg, transparent, $color-white-green);
+}
+.slide-btn:hover span:nth-child(3) {
+    right: 100%;
+
+    transition: 1s;
+    transition-delay: 0.5s;
+}
+
+.slide-btn span:nth-child(2) {
+    top: -100%;
+    right: 0;
+
+    width: 2px;
+    height: 100%;
+
+    background: linear-gradient(180deg, transparent, $color-white-green);
+}
+.slide-btn:hover span:nth-child(2) {
+    top: 100%;
+
+    transition: 1s;
+    transition-delay: 0.25s;
+}
+
+.slide-btn span:nth-child(4) {
+    bottom: -100%;
+    left: 0;
+
+    width: 2px;
+    height: 100%;
+
+    background: linear-gradient(360deg, transparent, $color-white-green);
+}
+.slide-btn:hover span:nth-child(4) {
+    bottom: 100%;
+
+    transition: 1s;
+    transition-delay: 0.75s;
+}
+
+.controls {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    cursor: pointer;
+}
+
+%control {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.control {
+    &-pause {
+        top: calc(60% - 20vh);
+        right: calc(60% - 10vh);
+        left: calc(57% - 20vh);
+
+        height: 0;
+
+        transition: opacity 0.25s ease-out;
+
+        opacity: 0;
+
+        @extend %control;
+
+        &:hover,
+        &:focus {
+            transition: opacity 1s ease-in 0.5s;
+
+            opacity: 1;
+            text-shadow: 0 0 30px rgba($color-deep-dark, 0.3);
+        }
+
+        span {
+            position: absolute;
+
+            display: block;
+
+            transform: translate(50%, 50%);
+
+            opacity: 0;
+        }
+    }
+
+    &-prev {
+        left: 55px; // 55px
+
+        width: 7%;
+
+        @extend %control;
+        @include md {
+            left: 50px;
+        }
+
+        &:hover,
+        &:focus {
+            color: $color-deep-dark;
+            background: linear-gradient(to right, rgba($color-white-green, 0.5), rgba($color-white-green, 0));
+            text-shadow: 0 0 10px $color-white;
+        }
+    }
+
+    &-next {
+        right: -15px; // 55px
+
+        width: 7%;
+
+        @extend %control;
+        @include md {
+            right: 0;
+        }
+
+        &:hover,
+        &:focus {
+            color: $color-deep-dark;
+            background: linear-gradient(to left, rgba($color-white-green, 0.5), rgba($color-white-green, 0));
+            text-shadow: 0 0 10px $color-white;
+        }
+    }
+}
+
+.indicators {
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 49%;
+
+    display: flex;
+    justify-content: center;
+
+    padding: 2em;
+
+    transform: translate(-35%, 0);
+
+    gap: 15px;
+    @include md {
+        left: 65%;
+
+        gap: 10px;
+    }
+    @include sm {
+        left: 70%;
+
+        padding: 1.5em;
+
+        gap: 5px;
+    }
+}
+.indicator {
+    width: 35px;
+    height: 2.5px;
+
+    cursor: pointer;
+
+    background-color: rgba(255, 255, 255, 0.3);
+
+    @include md {
+        width: 25px;
+    }
+    @include sm {
+        width: 20px;
+        height: 2px;
+    }
+
+    &.active {
+        background-color: $color-white;
+    }
+}

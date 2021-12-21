@@ -1,0 +1,79 @@
+@use "skin" as *;
+@use "variables" as *;
+@use "mixins-media" as *;
+
+.slider-bottom {
+    position: absolute;
+    z-index: 5;
+    bottom: 0;
+    left: $gap;
+
+    display: flex;
+    align-items: center;
+
+    width: calc(75% - #{$gap});
+    height: $gap;
+
+    @include md {
+        z-index: 15;
+
+        width: 50px;
+        height: 50px;
+        margin-left: -20px;
+    }
+}
+.slider-share {
+    flex: 0 1 auto;
+
+    &__item {
+        position: relative;
+        bottom: -1px;
+
+        display: flex;
+    }
+
+    &__item-link {
+        width: $gap;
+        height: $gap;
+        margin-top: -2px;
+
+        background-color: $color-grey;
+
+        @include md {
+            width: 50px;
+            height: 50px;
+        }
+
+        .fab {
+            position: relative;
+
+            width: $gap;
+            height: $gap;
+
+            border: none;
+
+            @include md {
+                width: 50px;
+                height: 50px;
+            }
+            &:last-child {
+                margin-top: -0.1px;
+
+                border: none;
+
+                &::after {
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+
+                    width: 3px;
+                    height: 100%;
+
+                    content: "";
+
+                    background-color: $color-green;
+                }
+            }
+        }
+    }
+}
