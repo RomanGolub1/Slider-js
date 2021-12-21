@@ -157,7 +157,7 @@
 
 body,
 html {
-  overflow: hidden;
+  overflow-x: hidden;
   height: 100%;
   margin: 0;
   font-family: Montserrat;
