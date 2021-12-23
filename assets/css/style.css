@@ -531,7 +531,7 @@ a {
 .control-pause {
   top: calc(60% - 20vh);
   right: calc(60% - 10vh);
-  left: calc(57% - 20vh);
+  left: calc(57% - 21vh);
   height: 0;
   -webkit-transition: opacity 0.25s ease-out;
   -o-transition: opacity 0.25s ease-out;
@@ -1038,6 +1038,9 @@ template {
   }
   .slide-container h2 {
     font-size: 40px;
+  }
+  .control-pause {
+    left: calc(55% - 22vh);
   }
   .control-prev {
     left: 50px;
