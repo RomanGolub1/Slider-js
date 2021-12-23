@@ -52,7 +52,7 @@
         flex-direction: column;
         justify-content: center;
 
-        padding-left: $gap;
+        padding-left: 50px;
 
         text-align: center;
 
@@ -99,10 +99,8 @@
 
     &-action {
         position: absolute;
-
-        float: right;
-
-        padding-left: $gap;
+        display: flex;
+        padding-left: 50px;
 
         transform: translate(0, 350%);
     }
@@ -295,7 +293,8 @@
     position: absolute;
     z-index: 10;
     bottom: 0;
-    left: 49%;
+    left: 50%;
+    margin-left: -20px;
 
     display: flex;
     justify-content: center;

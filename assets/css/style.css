@@ -376,7 +376,7 @@ a {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding-left: 70px;
+  padding-left: 50px;
   text-align: center;
   text-shadow: 10px 2px 40px rgba(37, 37, 37, 0.8);
 }
@@ -393,8 +393,10 @@ a {
 }
 .slide-action {
   position: absolute;
-  float: right;
-  padding-left: 70px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 50px;
   -webkit-transform: translate(0, 350%);
       -ms-transform: translate(0, 350%);
           transform: translate(0, 350%);
@@ -578,7 +580,8 @@ a {
   position: absolute;
   z-index: 10;
   bottom: 0;
-  left: 49%;
+  left: 50%;
+  margin-left: -20px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
